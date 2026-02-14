@@ -7,18 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clean Workspace') {
-            steps {
-                cleanWs()
-            }
-        }
-
-        stage('Clone Develop Branch') {
-            steps {
-                echo "Cloning develop branch..."
-            }
-        }
-
         stage('Prepare Target Directory') {
             steps {
                 sh """
@@ -31,7 +19,7 @@ pipeline {
         stage('Copy Files to Target Directory') {
             steps {
                 sh """
-                cp -r * ${TARGET_DIR}/
+                cp -r . ${TARGET_DIR}/
                 """
             }
         }
